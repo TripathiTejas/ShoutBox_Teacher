@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "960104334396",
+    "project_id": "shoutbox-29553",
+    "storage_bucket": "shoutbox-29553.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960104334396:android:4eb0c0e61e83ce3c436f39",
+        "android_client_info": {
+          "package_name": "org.kotakeducation.shoutbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960104334396-427ck9b6k7vs62mlshd6d8pl4f1iq9b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEEXKCkjcYtqfR9hOKS3rAcXKlazZDdps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960104334396-427ck9b6k7vs62mlshd6d8pl4f1iq9b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
