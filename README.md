@@ -1,5 +1,17 @@
 # ShoutBox_Teacher
-App For The Teachers
+App For The Teachers<br/>
+
+# Need For The App<br/>
+Since the COVID -19 pandemic has disrupted the normal lifestyle of people across the globe, the virtual world has come to the rescue. Amongst many institutions, schools have also shifted their base to virtual platforms to conduct classes online. Consequently, catering to the needs of all stages of education from pre-primary to university level, online education has emerged as an alternative to ordinary face to face classes. As a reult we have also taken a step to digitalize the study content delivered in our schools.<br/>
+
+# Solution <br/>
+Our team at Kotak Education Foundation have decided to build an application where students can upload the projects they do at school on a social forum where it can be seen and viewed by fellow students and teachers. The aim of the app is to provide students of various background a platform where they can showcase their talents and also motivate other students to think out of the box. <br/>
+
+# Requirements For The App
+Android version 5 or above <br/>
+Ram size equal to or greater than 2gb <br/>
+About 50 mb of storage should be free for the app to be installed <br/>
+A Google Account to authenticate the user <br/>
 
 # TimeLine<br/>
 ## WEEK 1 (7 June – 13 June)
