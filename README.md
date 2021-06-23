@@ -15,6 +15,10 @@ A Google Account to authenticate the user <br/>
 
 # TimeLine<br/>
 ## WEEK 1 (7 June – 13 June)
-•	Deciding on various functionality of the app.
-•	Designing a framework for the app
-•	Designing basic interface of the app
+•	Deciding on various functionality of the app.<br/>
+•	Designing a framework for the app.<br/>
+•	Designing basic interface of the app.<br/>
+## WEEK 2 (14 June – 20 June)
+•	Working on the login/register screen for the app. Implementing the authentication via google firebase.<br/>
+•	Email-based login for teachers.<br/>
+•	Connecting both student’s app and teacher’s app with the same database.<br/>
