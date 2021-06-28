@@ -53,6 +53,17 @@ public class ProjectDisplay extends AppCompatActivity {
 
         display(UserID,ProjectID);
 
+        updateProject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(ProjectDisplay.this,EditProject.class);
+                intent.putExtra("User ID",UserID);
+                intent.putExtra("Project Id",ProjectID);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         deleteProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +85,7 @@ public class ProjectDisplay extends AppCompatActivity {
                                                                 Toast.makeText(ProjectDisplay.this, "Project Deleted Successfully", Toast.LENGTH_SHORT).show();
                                                                 Intent intent = new Intent(ProjectDisplay.this,ProjectFeed.class);
                                                                 startActivity(intent);
+                                                                finish();
                                                             }
                                                         }).addOnFailureListener(new OnFailureListener() {
                                                             @Override
