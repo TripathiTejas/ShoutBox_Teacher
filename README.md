@@ -22,3 +22,7 @@ A Google Account to authenticate the user <br/>
 •	Working on the login/register screen for the app. Implementing the authentication via google firebase.<br/>
 •	Email-based login for teachers.<br/>
 •	Connecting both student’s app and teacher’s app with the same database.<br/>
+## WEEK 3 (21 June - 27 June)
+• Developing the main screen of the app where all projects on the portal can be viewed.<br/>
+•	Improving the UI/UX of the app for a more user-friendly experience.<br/>
+•	Test and debugging the app for possible bugs and during user registration.<br/>
