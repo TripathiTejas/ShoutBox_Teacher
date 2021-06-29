@@ -1,4 +1,4 @@
-package org.kotakeducation.shoutbox;
+package org.kotakeducation.shoutbox.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,22 +8,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.kotakeducation.shoutbox.Adapters.AdapterProjectFeed;
+import org.kotakeducation.shoutbox.Models.ModelForProjectFeed;
+import org.kotakeducation.shoutbox.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectFeed extends AppCompatActivity {
+public class ProjectFeedActivity extends AppCompatActivity {
 
     FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
@@ -51,7 +53,7 @@ public class ProjectFeed extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProjectFeed.this,AddProject.class);
+                Intent intent = new Intent(ProjectFeedActivity.this, AddProjectActivity.class);
                 startActivity(intent);
             }
         });
@@ -73,7 +75,7 @@ public class ProjectFeed extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ProjectFeed.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProjectFeedActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
     }

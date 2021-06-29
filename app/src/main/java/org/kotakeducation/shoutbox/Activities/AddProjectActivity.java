@@ -1,4 +1,4 @@
-package org.kotakeducation.shoutbox;
+package org.kotakeducation.shoutbox.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -7,17 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -26,13 +23,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.kotakeducation.shoutbox.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class AddProject extends AppCompatActivity {
+public class AddProjectActivity extends AppCompatActivity {
 
     private EditText ProjectTitle,ProjectDesc;
     private ImageView projectImage;
@@ -70,11 +69,11 @@ public class AddProject extends AppCompatActivity {
                 String projectDesc=ProjectDesc.getText().toString();
                 // check for empty fields
                 if(imageUri== null)
-                    Toast.makeText(AddProject.this, "Please add an Image", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddProjectActivity.this, "Please add an Image", Toast.LENGTH_SHORT).show();
                 else if(projectTitle.isEmpty())
-                    Toast.makeText(AddProject.this, "Please add a Title", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddProjectActivity.this, "Please add a Title", Toast.LENGTH_SHORT).show();
                 else if(projectDesc.isEmpty())
-                    Toast.makeText(AddProject.this, "Please add a Description", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddProjectActivity.this, "Please add a Description", Toast.LENGTH_SHORT).show();
                 else
                     uploadToStorage(imageUri,projectTitle,projectDesc);
                     //saveToUserList(projectTitle,projectDesc,userID);
@@ -118,7 +117,7 @@ public class AddProject extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AddProject.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddProjectActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -147,7 +146,7 @@ public class AddProject extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddProject.this, "Project Couldn't Be Uploaded", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddProjectActivity.this, "Project Couldn't Be Uploaded", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -165,15 +164,15 @@ public class AddProject extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(AddProject.this, "Project Added Successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(AddProject.this,ProjectFeed.class));
+                        Toast.makeText(AddProjectActivity.this, "Project Added Successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(AddProjectActivity.this, ProjectFeedActivity.class));
                         finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddProject.this, "Project Couldn't Be Uploaded", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddProjectActivity.this, "Project Couldn't Be Uploaded", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

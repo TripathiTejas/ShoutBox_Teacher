@@ -1,11 +1,10 @@
-package org.kotakeducation.shoutbox;
+package org.kotakeducation.shoutbox.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +20,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.StorageReference;
 
-public class EditProject extends AppCompatActivity {
+import org.kotakeducation.shoutbox.R;
+
+public class EditProjectActivity extends AppCompatActivity {
 
     private EditText ProjectTitle,ProjectDesc;
     private ImageView projectImage;
@@ -54,7 +54,7 @@ public class EditProject extends AppCompatActivity {
                 if(ProjectTitle.getText().toString().trim().length() > 0 && ProjectDesc.getText().toString().trim().length() > 0)
                 updateProject(UserID,ProjectID);
                 else
-                    Toast.makeText(EditProject.this, "Empty Fields Not Allowed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProjectActivity.this, "Empty Fields Not Allowed", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -79,7 +79,7 @@ public class EditProject extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(EditProject.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EditProjectActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -87,7 +87,7 @@ public class EditProject extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(EditProject.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProjectActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -100,7 +100,7 @@ public class EditProject extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Intent intent = new Intent(EditProject.this,ProjectFeed.class);
+                        Intent intent = new Intent(EditProjectActivity.this, ProjectFeedActivity.class);
                         startActivity(intent);
                         finish();
                     }
@@ -108,7 +108,7 @@ public class EditProject extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(EditProject.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProjectActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -123,7 +123,7 @@ public class EditProject extends AppCompatActivity {
                             if(ProjectID.equals(snapshot.getId())) {
                                 ProjectTitle.setText(snapshot.getString("Project Title"));
                                 ProjectDesc.setText(snapshot.getString("Project Desc"));
-                                Glide.with(EditProject.this).load(snapshot.getString("Project Image")).centerCrop().into(projectImage);
+                                Glide.with(EditProjectActivity.this).load(snapshot.getString("Project Image")).centerCrop().into(projectImage);
                                 break;
                             }
                         }
@@ -131,7 +131,7 @@ public class EditProject extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(EditProject.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditProjectActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
 

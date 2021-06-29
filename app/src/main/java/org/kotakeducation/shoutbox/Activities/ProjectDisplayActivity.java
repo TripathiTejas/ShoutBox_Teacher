@@ -1,11 +1,9 @@
-package org.kotakeducation.shoutbox;
+package org.kotakeducation.shoutbox.Activities;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,9 +22,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.List;
+import org.kotakeducation.shoutbox.R;
 
-public class ProjectDisplay extends AppCompatActivity {
+public class ProjectDisplayActivity extends AppCompatActivity {
 
     private TextView projectTitle,projectDesc;
     private ImageView projectImage;
@@ -56,7 +54,7 @@ public class ProjectDisplay extends AppCompatActivity {
         updateProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(ProjectDisplay.this,EditProject.class);
+                Intent intent =new Intent(ProjectDisplayActivity.this, EditProjectActivity.class);
                 intent.putExtra("User ID",UserID);
                 intent.putExtra("Project Id",ProjectID);
                 startActivity(intent);
@@ -82,22 +80,22 @@ public class ProjectDisplay extends AppCompatActivity {
                                                         db.collection("Projects").document(snapshot.getId()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void aVoid) {
-                                                                Toast.makeText(ProjectDisplay.this, "Project Deleted Successfully", Toast.LENGTH_SHORT).show();
-                                                                Intent intent = new Intent(ProjectDisplay.this,ProjectFeed.class);
+                                                                Toast.makeText(ProjectDisplayActivity.this, "Project Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                                                Intent intent = new Intent(ProjectDisplayActivity.this, ProjectFeedActivity.class);
                                                                 startActivity(intent);
                                                                 finish();
                                                             }
                                                         }).addOnFailureListener(new OnFailureListener() {
                                                             @Override
                                                             public void onFailure(@NonNull Exception e) {
-                                                                Toast.makeText(ProjectDisplay.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(ProjectDisplayActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
                                                             }
                                                         });
                                                     }
                                                 }).addOnFailureListener(new OnFailureListener() {
                                                     @Override
                                                     public void onFailure(@NonNull Exception exception) {
-                                                        Toast.makeText(ProjectDisplay.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(ProjectDisplayActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
                                             }
@@ -106,14 +104,14 @@ public class ProjectDisplay extends AppCompatActivity {
                                 }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(ProjectDisplay.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProjectDisplayActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ProjectDisplay.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProjectDisplayActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -131,7 +129,7 @@ public class ProjectDisplay extends AppCompatActivity {
                             if(ProjectID.equals(snapshot.getId())) {
                                 projectTitle.setText(snapshot.getString("Project Title"));
                                 projectDesc.setText(snapshot.getString("Project Desc"));
-                                Glide.with(ProjectDisplay.this).load(snapshot.getString("Project Image")).centerCrop().into(projectImage);
+                                Glide.with(ProjectDisplayActivity.this).load(snapshot.getString("Project Image")).centerCrop().into(projectImage);
                                 break;
                             }
                         }
@@ -139,7 +137,7 @@ public class ProjectDisplay extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ProjectDisplay.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProjectDisplayActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
 

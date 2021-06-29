@@ -1,24 +1,27 @@
-package org.kotakeducation.shoutbox;
+package org.kotakeducation.shoutbox.Adapters;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.kotakeducation.shoutbox.Activities.ProjectDisplayActivity;
+import org.kotakeducation.shoutbox.Activities.ProjectFeedActivity;
+import org.kotakeducation.shoutbox.Models.ModelForProjectFeed;
+import org.kotakeducation.shoutbox.R;
 
 import java.util.List;
 
 public class AdapterProjectFeed extends RecyclerView.Adapter<AdapterProjectFeed.MyViewHolder> {
 
-    private ProjectFeed activity;
+    private ProjectFeedActivity activity;
     private List<ModelForProjectFeed> mList;
 
-    public AdapterProjectFeed(ProjectFeed activity,List<ModelForProjectFeed> mList){
+    public AdapterProjectFeed(ProjectFeedActivity activity, List<ModelForProjectFeed> mList){
         this.activity=activity;
         this.mList=mList;
     }
@@ -55,7 +58,7 @@ public class AdapterProjectFeed extends RecyclerView.Adapter<AdapterProjectFeed.
         @Override
         public void onClick(View v) {
             int position =getAdapterPosition();
-            Intent intent =new Intent(activity,ProjectDisplay.class);
+            Intent intent =new Intent(activity, ProjectDisplayActivity.class);
             intent.putExtra("User ID",mList.get(position).getUserId());
             intent.putExtra("Project Id",mList.get(position).getProjectID());
             activity.startActivity(intent);
