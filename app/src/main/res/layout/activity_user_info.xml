@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context=".Activities.UserInfo"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        style="@style/CategoryStyle"
+        android:fontFamily="sans-serif-black"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="Tell Us About Yourself"
+        android:gravity="center_horizontal"
+        android:textSize="40sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/FullName"
+        android:paddingLeft="15dp"
+        android:background="@drawable/button_back"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Full Name"
+        android:layout_marginBottom="20dp"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/Age"
+        android:paddingLeft="15dp"
+        android:background="@drawable/button_back"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Age"
+        android:layout_marginBottom="20dp"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/SchoolName"
+        android:paddingLeft="15dp"
+        android:background="@drawable/button_back"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="School Name"
+        android:layout_marginBottom="20dp"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/Address"
+        android:paddingLeft="15dp"
+        android:background="@drawable/button_back"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Address"
+        android:layout_marginBottom="20dp"
+        android:inputType="text"/>
+
+    <Button
+        android:id="@+id/NextButton"
+        android:layout_margin="24dp"
+        style="@style/ButtonStyle"
+        android:text="Next"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

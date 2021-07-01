@@ -67,7 +67,7 @@ public class ProjectFeedActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         list.clear();
                         for(DocumentSnapshot snapshot : task.getResult()){
-                            ModelForProjectFeed model =new ModelForProjectFeed(snapshot.getString("Project Title"),snapshot.getString("User ID"),snapshot.getString("Date of Upload"),snapshot.getString("User ID"),snapshot.getString("Project Id"));
+                            ModelForProjectFeed model =new ModelForProjectFeed(snapshot.getString("Project Title"),snapshot.getString("User Name"),snapshot.getString("Date of Upload"),snapshot.getString("User ID"),snapshot.getString("Project Id"));
                             list.add(model);
                         }
                         adapter.notifyDataSetChanged();

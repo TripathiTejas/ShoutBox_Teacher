@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoutBoxTeacher">
-        <activity android:name=".Activities.EditProjectActivity"></activity>
+        <activity android:name=".Activities.UserInfo"></activity>
+        <activity android:name=".Activities.EditProjectActivity" />
         <activity android:name=".Activities.ProjectDisplayActivity" />
         <activity android:name=".Activities.AddProjectActivity" />
         <activity android:name=".Activities.ProjectFeedActivity" />

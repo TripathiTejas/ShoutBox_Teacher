@@ -7,18 +7,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -152,29 +163,50 @@ public class AddProjectActivity extends AppCompatActivity {
     }
 
     private void saveToCommonList(String userID,String projectID,String projectTitle,String date,String ImageID){
-        Map<String, Object> map = new HashMap<>();
-        map.put("User ID",userID);
-        map.put("Project Id",projectID);
-        map.put("Project Title",projectTitle);
-        map.put("Date of Upload",date);
-        map.put("Image ID",ImageID);
 
-        db.collection("Projects")
-                .add(map)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("Teacher Info").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(AddProjectActivity.this, "Project Added Successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(AddProjectActivity.this, ProjectFeedActivity.class));
-                        finish();
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for(DocumentSnapshot snapshot : task.getResult()){
+                            if(userID.equals(snapshot.getId())) {
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("User ID",userID);
+                                map.put("Project Id",projectID);
+                                map.put("Project Title",projectTitle);
+                                map.put("Date of Upload",date);
+                                map.put("Image ID",ImageID);
+                                map.put("User Name",snapshot.getString("FULL NAME"));
+
+                                db.collection("Projects")
+                                        .add(map)
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                                Toast.makeText(AddProjectActivity.this, "Project Added Successfully", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(AddProjectActivity.this, ProjectFeedActivity.class));
+                                                finish();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(AddProjectActivity.this, "Project Couldn't Be Uploaded", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                                break;
+                            }
+                        }
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddProjectActivity.this, "Project Couldn't Be Uploaded", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AddProjectActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
 }
