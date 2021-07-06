@@ -5,15 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.kotakeducation.shoutbox.Activities.ProjectDisplayActivity;
 import org.kotakeducation.shoutbox.Activities.ProjectFeedActivity;
 import org.kotakeducation.shoutbox.Models.ModelForProjectFeed;
 import org.kotakeducation.shoutbox.R;
-
 import java.util.List;
 
 public class AdapterProjectFeed extends RecyclerView.Adapter<AdapterProjectFeed.MyViewHolder> {

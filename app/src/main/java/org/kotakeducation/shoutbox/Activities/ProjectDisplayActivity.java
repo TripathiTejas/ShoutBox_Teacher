@@ -28,7 +28,7 @@ public class ProjectDisplayActivity extends AppCompatActivity {
 
     private TextView projectTitle,projectDesc;
     private ImageView projectImage;
-    private Button deleteProject,updateProject;
+    private Button deleteProject,updateProject, comments;
     private String UserID,ProjectID;
     private FirebaseFirestore db;
     private StorageReference reference= FirebaseStorage.getInstance().getReference();
@@ -43,6 +43,7 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         projectImage=findViewById(R.id.ProjectImage);
         deleteProject=findViewById(R.id.DeleteProject);
         updateProject=findViewById(R.id.UpdateProject);
+        comments=findViewById(R.id.Comments);
         db=FirebaseFirestore.getInstance();
 
         Intent intent=getIntent();
@@ -50,6 +51,16 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         ProjectID=intent.getStringExtra("Project Id");
 
         display(UserID,ProjectID);
+
+        comments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(ProjectDisplayActivity.this, Comments.class);
+                intent.putExtra("User ID",UserID);
+                intent.putExtra("Project Id",ProjectID);
+                startActivity(intent);
+            }
+        });
 
         updateProject.setOnClickListener(new View.OnClickListener() {
             @Override

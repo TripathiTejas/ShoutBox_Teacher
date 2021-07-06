@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Activities.Comments">
+
+    <TextView
+        android:id="@+id/CommentTitle"
+        android:layout_width="match_parent"
+        style="@style/CategoryStyle"
+        android:fontFamily="sans-serif-black"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="Comments"
+        android:gravity="center_horizontal"
+        android:textSize="40sp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/displayComment"
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CommentTitle"
+        android:layout_marginBottom="10dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/AddComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/add_comment"
+        app:fabSize="auto"/>
+
+</RelativeLayout>

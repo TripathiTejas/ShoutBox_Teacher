@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your Comment"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="26sp"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/txt_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Enter your Comment"
+        android:paddingLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="20sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/Cancel"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Cancel"/>
+        <Button
+            android:id="@+id/saveComment"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Add"/>
+    </LinearLayout>
+
+</LinearLayout>
