@@ -26,3 +26,8 @@ A Google Account to authenticate the user <br/>
 • Developing the main screen of the app where all projects on the portal can be viewed.<br/>
 •	Improving the UI/UX of the app for a more user-friendly experience.<br/>
 •	Test and debugging the app for possible bugs and during user registration.<br/>
+## WEEK 4 (28 June - 4 July)<br/>
+•	Adding basic functionality into the app – allowing users to upload their projects onto the database.<br/>
+•	Working on the back-end of the application.<br/>
+•	Syncing the application database with cloud database.<br/>
+•	Storing user info on the real-time database of google firebase.<br/>
