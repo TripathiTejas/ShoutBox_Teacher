@@ -13,6 +13,9 @@ Ram size equal to or greater than 2gb <br/>
 About 50 mb of storage should be free for the app to be installed <br/>
 A Google Account to authenticate the user <br/>
 
+## Video Demo (as on 04.07.2021)
+[link](https://drive.google.com/file/d/1--OhTtDxGKjD3U7bmn4hfyXp3Uqq2wIJ/view?usp=sharing)
+
 # TimeLine<br/>
 ## WEEK 1 (7 June – 13 June)
 •	Deciding on various functionality of the app.<br/>
@@ -31,5 +34,3 @@ A Google Account to authenticate the user <br/>
 •	Working on the back-end of the application.<br/>
 •	Syncing the application database with cloud database.<br/>
 •	Storing user info on the real-time database of google firebase.<br/>
-
-[![Watch the video](https://drive.google.com/file/d/1--OhTtDxGKjD3U7bmn4hfyXp3Uqq2wIJ/view?usp=sharing)
