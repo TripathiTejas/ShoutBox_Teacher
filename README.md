@@ -34,3 +34,7 @@ A Google Account to authenticate the user <br/>
 •	Working on the back-end of the application.<br/>
 •	Syncing the application database with cloud database.<br/>
 •	Storing user info on the real-time database of google firebase.<br/>
+## WEEK 5 (5 July - 11 July)<br/>
+•	Retrieving information from the database also allowing a student to view other peers’ projects.<br/>
+•	Giving the teacher’s account administrative privileges, allowing them to edit/modify any project uploaded on the portal.<br/>
+•	Providing students an option to upload an image along with their project.<br/>
