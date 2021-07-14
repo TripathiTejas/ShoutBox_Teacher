@@ -16,12 +16,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.jetbrains.annotations.NotNull;
 import org.kotakeducation.shoutbox.R;
 
 public class ProjectDisplayActivity extends AppCompatActivity {
@@ -34,6 +42,15 @@ public class ProjectDisplayActivity extends AppCompatActivity {
     private StorageReference reference= FirebaseStorage.getInstance().getReference();
 
     TextView enquiryDetailsTV;
+
+    ImageView likeButton;
+    TextView likeCountTV;
+
+    DatabaseReference likesRef;
+
+    FirebaseUser mCurrentUser;
+    long count;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +67,54 @@ public class ProjectDisplayActivity extends AppCompatActivity {
 
         enquiryDetailsTV=findViewById(R.id.enquiryDetailsTV);
 
+        likeButton = findViewById(R.id.likeImage);
+        likeCountTV = findViewById(R.id.likeCount);
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
         Intent intent=getIntent();
         UserID=intent.getStringExtra("User ID");
         ProjectID=intent.getStringExtra("Project Id");
+
+        likesRef = FirebaseDatabase.getInstance().getReference().child("project-likes").child(ProjectID);
+
+
+        likesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                count = snapshot.getChildrenCount();
+                likeCountTV.setText(String.valueOf(count));
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+        likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                likesRef.child(mCurrentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        if (!snapshot.exists()){
+                            likesRef.child(mCurrentUser.getUid()).setValue(mCurrentUser.getUid());
+                            Toast.makeText(ProjectDisplayActivity.this, "Liked!", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            likesRef.child(mCurrentUser.getUid()).removeValue();
+                            Toast.makeText(ProjectDisplayActivity.this, "Like Removed!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
 
         display(UserID,ProjectID);
 
