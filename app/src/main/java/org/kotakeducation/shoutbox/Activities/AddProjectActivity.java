@@ -152,6 +152,8 @@ public class AddProjectActivity extends AppCompatActivity {
         map.put("Project Title",projectTitle);
         map.put("Project Desc",projectDesc);
         map.put("Project Image",imageURL);
+        map.put("enquiryDetails", model);
+
 
         db.collection(userID)
                 .add(map)

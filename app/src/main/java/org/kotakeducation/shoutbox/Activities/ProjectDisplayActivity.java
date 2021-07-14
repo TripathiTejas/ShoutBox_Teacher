@@ -33,6 +33,8 @@ public class ProjectDisplayActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private StorageReference reference= FirebaseStorage.getInstance().getReference();
 
+    TextView enquiryDetailsTV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,8 @@ public class ProjectDisplayActivity extends AppCompatActivity {
         updateProject=findViewById(R.id.UpdateProject);
         comments=findViewById(R.id.Comments);
         db=FirebaseFirestore.getInstance();
+
+        enquiryDetailsTV=findViewById(R.id.enquiryDetailsTV);
 
         Intent intent=getIntent();
         UserID=intent.getStringExtra("User ID");
@@ -140,6 +144,9 @@ public class ProjectDisplayActivity extends AppCompatActivity {
                             if(ProjectID.equals(snapshot.getId())) {
                                 projectTitle.setText(snapshot.getString("Project Title"));
                                 projectDesc.setText(snapshot.getString("Project Desc"));
+
+                                enquiryDetailsTV.setText(snapshot.get("enquiryDetails").toString());
+
                                 Glide.with(ProjectDisplayActivity.this).load(snapshot.getString("Project Image")).centerCrop().into(projectImage);
                                 break;
                             }
@@ -151,6 +158,7 @@ public class ProjectDisplayActivity extends AppCompatActivity {
                 Toast.makeText(ProjectDisplayActivity.this, "Check your Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
+
 
     }
 

@@ -4,78 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ProjectDisplayActivity"
-    android:orientation="vertical"
     android:background="@color/background"
-    android:padding="20dp">
-
-    <TextView
-        android:id="@+id/ProjectTitle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fontFamily="sans-serif-black"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:text="Project Title"
-        android:autoSizeTextType="uniform"
-        android:padding="10dp"
-        android:gravity="center"
-        android:textSize="40sp" />
-
-    <ImageView
-        android:id="@+id/ProjectImage"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:src="@drawable/logo"
-        android:scaleType="fitXY"
-        android:padding="10dp"
-        android:layout_marginBottom="15dp"/>
-
-    <TextView
-        android:id="@+id/ProjectDescription"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:text="Project Description"/>
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Activities.ProjectDisplayActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_marginTop="8dp"
+        <TextView
+            android:id="@+id/ProjectTitle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/DeleteProject"
-                style="@style/ButtonStyle"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Delete"/>
-            <Button
-                android:id="@+id/UpdateProject"
-                style="@style/ButtonStyle"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Update"/>
-        </LinearLayout>
-        <LinearLayout
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Project Title"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ProjectImage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
-            <Button
-                android:id="@+id/Comments"
-                style="@style/ButtonStyle"
-                android:text="Comments"/>
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_marginBottom="15dp"
+            android:layout_weight="3"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo" />
 
+        <TextView
+            android:id="@+id/ProjectDescription"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="Project Description" />
+
+        <TextView
+            android:id="@+id/enquiryDetailsTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/DeleteProject"
+                    style="@style/ButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Delete" />
+
+                <Button
+                    android:id="@+id/UpdateProject"
+                    style="@style/ButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Update" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/Comments"
+                    style="@style/ButtonStyle"
+                    android:text="Comments" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
