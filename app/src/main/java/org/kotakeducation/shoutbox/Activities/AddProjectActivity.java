@@ -35,6 +35,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import org.kotakeducation.shoutbox.Models.EnquiryProjectModel;
+import org.kotakeducation.shoutbox.Models.ModelForProjectFeed;
 import org.kotakeducation.shoutbox.R;
 
 import java.text.SimpleDateFormat;
@@ -95,9 +96,12 @@ public class AddProjectActivity extends AppCompatActivity {
                     Toast.makeText(AddProjectActivity.this, "Please add a Title", Toast.LENGTH_SHORT).show();
                 else if(projectDesc.isEmpty())
                     Toast.makeText(AddProjectActivity.this, "Please add a Description", Toast.LENGTH_SHORT).show();
-                else
+                else if (model == null){
+                    Toast.makeText(AddProjectActivity.this, "Add Enquiry Details First!", Toast.LENGTH_SHORT).show();
+                }
+                else {
                     uploadToStorage(imageUri,projectTitle,projectDesc);
-                    //saveToUserList(projectTitle,projectDesc,userID);
+                }
             }
         });
 
@@ -148,11 +152,6 @@ public class AddProjectActivity extends AppCompatActivity {
         map.put("Project Title",projectTitle);
         map.put("Project Desc",projectDesc);
         map.put("Project Image",imageURL);
-        //map.put("Image ID",ImageId);
-
-//        mAuth = FirebaseAuth.getInstance();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        String userID= currentUser.getUid();
 
         db.collection(userID)
                 .add(map)
@@ -161,7 +160,7 @@ public class AddProjectActivity extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         String projectID = documentReference.getId();
                         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                        saveToCommonList(userID,projectID,projectTitle,date,ImageId);
+                        saveToCommonList(userID,projectID,projectTitle,date,ImageId, model);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -172,7 +171,7 @@ public class AddProjectActivity extends AppCompatActivity {
                 });
     }
 
-    private void saveToCommonList(String userID,String projectID,String projectTitle,String date,String ImageID){
+    private void saveToCommonList(String userID, String projectID, String projectTitle, String date, String ImageID, EnquiryProjectModel model){
 
         db.collection("Teacher Info").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -187,6 +186,7 @@ public class AddProjectActivity extends AppCompatActivity {
                                 map.put("Date of Upload",date);
                                 map.put("Image ID",ImageID);
                                 map.put("User Name",snapshot.getString("FULL NAME"));
+                                map.put("enquiryDetails", model);
 
                                 db.collection("Projects")
                                         .add(map)
