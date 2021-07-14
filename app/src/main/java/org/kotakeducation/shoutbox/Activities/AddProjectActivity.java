@@ -34,6 +34,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.kotakeducation.shoutbox.Models.EnquiryProjectModel;
 import org.kotakeducation.shoutbox.R;
 
 import java.text.SimpleDateFormat;
@@ -52,10 +53,19 @@ public class AddProjectActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
 
+    EnquiryProjectModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_project);
+
+
+        if (getIntent().getStringExtra("activity").equals("enquiry")){
+            model= (EnquiryProjectModel) getIntent().getExtras().getSerializable("enquiryModel");
+            Toast.makeText(this, model.getQuestion(), Toast.LENGTH_SHORT).show();
+
+        }
 
         ProjectTitle=findViewById(R.id.ProjectTitle);
         ProjectDesc=findViewById(R.id.ProjectDescription);
@@ -111,7 +121,7 @@ public class AddProjectActivity extends AppCompatActivity {
         Long tsLong = System.currentTimeMillis()/1000;
         String ts = tsLong.toString();
 
-        String ImageId=userID+" "+ts;
+        String ImageId = userID+" "+ts;
 
         StorageReference fileref=reference.child(ImageId);
         fileref.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -209,4 +219,7 @@ public class AddProjectActivity extends AppCompatActivity {
 
     }
 
+    public void openEnquiryDetails(View view) {
+        startActivity(new Intent(AddProjectActivity.this, AddEnquiryDetailsActivity.class));
+    }
 }

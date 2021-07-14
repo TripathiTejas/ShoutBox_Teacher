@@ -54,6 +54,7 @@ public class ProjectFeedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProjectFeedActivity.this, AddProjectActivity.class);
+                intent.putExtra("activity", "feed");
                 startActivity(intent);
             }
         });
@@ -61,6 +62,9 @@ public class ProjectFeedActivity extends AppCompatActivity {
     }
 
     public void showData(){
+
+
+
         db.collection("Projects").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

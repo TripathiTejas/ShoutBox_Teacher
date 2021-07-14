@@ -37,9 +37,18 @@
         android:gravity="top"/>
 
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Enquiry Details"
+        android:id="@+id/addNew"
+        android:onClick="openEnquiryDetails"
+        android:layout_gravity="center"/>
+
+    <Button
         android:id="@+id/AddProject"
         android:layout_margin="24dp"
         style="@style/ButtonStyle"
         android:text="Upload Project"/>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
