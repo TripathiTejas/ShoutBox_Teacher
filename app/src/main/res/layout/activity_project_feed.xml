@@ -47,6 +47,17 @@
         android:layout_height="wrap_content"
         android:text="Edit Profile"
         android:layout_alignParentBottom="true"
-        android:onClick="editProfile"/>
+        android:onClick="editProfile"
+        android:id="@+id/editBtn"
+        android:layout_marginHorizontal="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="logout"
+        android:onClick="logout"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_toRightOf="@id/editBtn" />
 
 </RelativeLayout>

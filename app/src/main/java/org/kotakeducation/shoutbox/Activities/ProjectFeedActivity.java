@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -87,5 +88,11 @@ public class ProjectFeedActivity extends AppCompatActivity {
 
     public void editProfile(View view) {
         startActivity(new Intent(ProjectFeedActivity.this, UserInfo.class));
+    }
+
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(ProjectFeedActivity.this, UserInfo.class));
+        finish();
     }
 }
