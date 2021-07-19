@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,9 +27,10 @@ import org.kotakeducation.shoutbox.R;
 
 public class EditProjectActivity extends AppCompatActivity {
 
-    private EditText ProjectTitle, ProjectDesc;
+    private EditText ProjectTitle;
+    TextInputEditText ProjectDesc;
     private ImageView projectImage;
-    private Button UpdateProject;
+    private ExtendedFloatingActionButton UpdateProject;
     private String UserID, ProjectID;
     private FirebaseFirestore db;
 
@@ -51,11 +54,10 @@ public class EditProjectActivity extends AppCompatActivity {
         UpdateProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ProjectTitle.getText().toString().trim().length() > 0 && ProjectDesc.getText().toString().trim().length() > 0){
+                if (ProjectTitle.getText().toString().trim().length() > 0 && ProjectDesc.getText().toString().trim().length() > 0) {
                     Toast.makeText(EditProjectActivity.this, "Updating Changes", Toast.LENGTH_SHORT).show();
                     updateProject(UserID, ProjectID);
-                }
-                else
+                } else
                     Toast.makeText(EditProjectActivity.this, "Empty Fields Not Allowed", Toast.LENGTH_SHORT).show();
             }
         });
