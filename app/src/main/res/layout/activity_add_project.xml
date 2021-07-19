@@ -1,54 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.AddProjectActivity"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:background="@color/background"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:context=".Activities.AddProjectActivity">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addEnquiry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1. Add Enquiry Details"
-        android:id="@+id/addEnquiry"
+        android:layout_gravity="center"
         android:onClick="openEnquiryDetails"
-        android:layout_gravity="center"/>
-    
+        android:text="1. Add Enquiry Details"
+        android:layout_centerHorizontal="true"/>
+
     <ImageView
+        android:layout_marginTop="10dp"
+        android:background="@drawable/stroke"
+        android:layout_below="@id/addEnquiry"
         android:id="@+id/ProjectImage"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
         android:layout_weight="8"
-        android:padding="50dp"
+        android:padding="10dp"
         android:scaleType="centerCrop"
         android:src="@drawable/logo"/>
 
-    <EditText
-        android:id="@+id/ProjectTitle"
-        style="@style/EditorFieldStyle"
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/ll"
+        android:layout_below="@id/ProjectImage"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:inputType="textCapWords"
-        android:hint="Project Title" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_below="@id/ProjectImage"
+            android:id="@+id/emailTIL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/dark_blue"
+            android:theme="@style/EditScreenTextInputLayoutStyle"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:endIconMode="custom"
+            app:hintTextColor="@color/dark_blue">
 
-    <EditText
-        android:id="@+id/ProjectDescription"
-        style="@style/EditorFieldStyle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:hint="Project description"
-        android:gravity="top"/>
+            <EditText
+                android:id="@+id/ProjectTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableTint="@color/dark_blue"
+                android:fontFamily="@font/calibri"
+                android:hint="Add a title"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingHorizontal="7dp"
+                android:paddingTop="25dp"
+                android:textColor="@color/dark_blue"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_below="@id/emailTIL"
+            android:id="@+id/bodtTiL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:hint="Project Description"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/dark_blue"
+            android:layout_above="@id/AddProject">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ProjectDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:fontFamily="@font/calibri"
+                android:gravity="top"
+                android:lines="10"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/AddProject"
-        android:layout_margin="24dp"
-        style="@style/ButtonStyle"
-        android:text="Upload Project"/>
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20dp"
+        android:text="Upload Project"
+        app:fabSize="auto"
+        app:icon="@drawable/ic_baseline_cloud_upload_24" />
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>
