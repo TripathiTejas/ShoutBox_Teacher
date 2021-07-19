@@ -65,9 +65,6 @@ public class ProjectFeedActivity extends AppCompatActivity {
     }
 
     public void showData(){
-
-
-
         db.collection("Projects").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -100,7 +97,7 @@ public class ProjectFeedActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(ProjectFeedActivity.this, UserInfo.class));
+                        startActivity(new Intent(ProjectFeedActivity.this, LoginScreenActivity.class));
                         finish();
                     }
                 })

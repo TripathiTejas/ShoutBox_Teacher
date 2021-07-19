@@ -71,6 +71,7 @@ public class UserInfo extends AppCompatActivity {
                     db.collection("Teacher Info").document(userID).set(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
+                            Toast.makeText(UserInfo.this, "Saving details", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(UserInfo.this,ProjectFeedActivity.class);
                             startActivity(intent);
                         }

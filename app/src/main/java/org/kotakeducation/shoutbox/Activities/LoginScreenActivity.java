@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,7 +23,7 @@ public class LoginScreenActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private EditText email,passWord;
-    private Button signInButton;
+    private MaterialButton signInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class LoginScreenActivity extends AppCompatActivity {
         signInButton.setOnClickListener(v -> {
             String email = LoginScreenActivity.this.email.getText().toString();
             String password = passWord.getText().toString();
+
+            Toast.makeText(LoginScreenActivity.this, "Signing in..", Toast.LENGTH_SHORT).show();
             if(email.isEmpty()){
                 LoginScreenActivity.this.email.setError("E-mail is required!");
                 LoginScreenActivity.this.email.requestFocus();
