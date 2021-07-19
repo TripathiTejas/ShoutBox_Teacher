@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,7 +31,7 @@ import java.util.List;
 
 public class ProjectFeedActivity extends AppCompatActivity {
 
-    FloatingActionButton floatingActionButton;
+    ExtendedFloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
     private FirebaseFirestore db;
     //private FirebaseAuth mAuth;
@@ -71,7 +72,6 @@ public class ProjectFeedActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         list.clear();
                         for(DocumentSnapshot snapshot : task.getResult()){
-
                             ModelForProjectFeed model =new ModelForProjectFeed(snapshot.getString("Project Title"),snapshot.getString("User Name"),snapshot.getString("Date of Upload"),snapshot.getString("User ID"),snapshot.getString("Project Id"));
                             list.add(model);
                         }

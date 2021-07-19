@@ -209,7 +209,7 @@ public class ProjectDisplayActivity extends AppCompatActivity {
 
                                 enquiryDetailsTV.setText(snapshot.get("enquiryDetails").toString());
 
-                                Glide.with(ProjectDisplayActivity.this).load(snapshot.getString("Project Image")).centerCrop().into(projectImage);
+                                Glide.with(getApplicationContext()).load(snapshot.getString("Project Image")).centerCrop().into(projectImage);
                                 break;
                             }
                         }

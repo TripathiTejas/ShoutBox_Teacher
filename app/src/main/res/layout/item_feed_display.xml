@@ -2,20 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:elevation="5dp"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="5dp"
-    app:cardBackgroundColor="@color/dark_blue">
+    android:background="@color/dark_blue">
 
     <LinearLayout
-        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginLeft="15dp"
-        android:layout_marginVertical="2dp"
-        android:layout_marginRight="4dp">
+        android:padding="10dp">
         <TextView
             android:layout_margin="5dp"
             android:id="@+id/ProjectTitle"
@@ -26,7 +19,7 @@
             android:text="Project Title"
             android:gravity="center"
             android:textSize="18sp"
-            android:fontFamily="@font/gotham" />
+            android:fontFamily="@font/gotham"/>
 
         <LinearLayout
             android:weightSum="2"
@@ -41,11 +34,9 @@
                 android:textColor="@color/dark_blue"
                 android:layout_height="match_parent"
                 android:text="User Name"
-                android:fontFamily="@font/calibri"
                 android:gravity="center"
                 android:textSize="15sp"/>
             <TextView
-                android:fontFamily="@font/calibri"
                 android:id="@+id/ProjectDate"
                 android:layout_width="0dp"
                 android:layout_weight="1"
