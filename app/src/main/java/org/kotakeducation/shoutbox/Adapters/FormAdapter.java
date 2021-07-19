@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,6 +70,12 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.FormViewHolder
 
                 holder.isCollapsed = ! holder.isCollapsed;
                 holder.collapseLL.setVisibility(holder.isCollapsed ? View.VISIBLE : View.GONE);
+                if (!holder.isCollapsed){
+                    holder.downIcon.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24);
+                }
+                else {
+                    holder.downIcon.setImageResource(R.drawable.ic_baseline_arrow_right_24);
+                }
             }
         });
 
@@ -107,12 +115,14 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.FormViewHolder
     public class FormViewHolder extends RecyclerView.ViewHolder {
 
         TextView headingTV, enquiryInfoTV;
-        TextInputEditText bodyET;
+        EditText bodyET;
 
         LinearLayout collapseLL, headingLL;
         boolean isCollapsed = false;
 
         Button saveBtn;
+
+        ImageView downIcon;
 
         public FormViewHolder(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
             super(itemView);
@@ -123,6 +133,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.FormViewHolder
             collapseLL = itemView.findViewById(R.id.collapseLL);
             headingLL = itemView.findViewById(R.id.headingLL);
             saveBtn = itemView.findViewById(R.id.saveBtn);
+            downIcon = itemView.findViewById(R.id.downIcon);
         }
     }
 }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import org.kotakeducation.shoutbox.Adapters.FormAdapter;
 import org.kotakeducation.shoutbox.Models.EnquiryProjectModel;
@@ -31,7 +32,7 @@ public class AddEnquiryDetailsActivity extends AppCompatActivity {
     FormAdapter adapter;
 
     TextView tempTV;
-    Button confirmBtn;
+    ExtendedFloatingActionButton confirmBtn;
 
     HashMap<String, Object> bodyTextHashmap = new HashMap<>();
 

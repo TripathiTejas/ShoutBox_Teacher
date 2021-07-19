@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_margin="5dp">
 
@@ -9,16 +10,20 @@
         android:id="@+id/headingLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#909090"
+        android:background="@color/dark_blue"
         android:padding="10dp">
 
         <ImageView
+            android:id="@+id/downIcon"
+            app:tint="@color/white"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_arrow_right_24" />
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_arrow_drop_down_24" />
 
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/headingTV"
+            android:fontFamily="@font/gotham"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,16 +41,37 @@
         android:visibility="gone">
 
         <TextView
+            android:fontFamily="@font/calibri"
+            android:textSize="18sp"
             android:id="@+id/enquiryInfoTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Enquiry info" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/bodyET"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="body"/>
+            android:textColorHint="@color/dark_blue"
+            android:theme="@style/EditScreenTextInputLayoutStyle"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="@color/dark_blue"
+            app:endIconMode="custom"
+            android:id="@+id/emailTIL">
+
+            <EditText
+                android:drawableTint="@color/dark_blue"
+                android:paddingHorizontal="7dp"
+                android:paddingTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/calibri"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textColor="@color/dark_blue"
+                android:textSize="16sp"
+                android:id="@+id/bodyET"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="wrap_content"
@@ -54,7 +80,6 @@
             android:id="@+id/saveBtn"
             android:visibility="gone"
             android:layout_gravity="center"/>
-
 
     </LinearLayout>
 
