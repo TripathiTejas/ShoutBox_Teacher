@@ -25,6 +25,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/gotham"
             android:id="@+id/UserNameComment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -36,6 +37,7 @@
             android:textColor="@color/white"/>
 
         <TextView
+            android:fontFamily="@font/calibri"
             android:id="@+id/CommentText"
             android:layout_width="match_parent"
             android:layout_height="0dp"

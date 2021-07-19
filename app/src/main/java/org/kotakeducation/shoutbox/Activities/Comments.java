@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -100,8 +101,8 @@ public class Comments extends AppCompatActivity {
         final AlertDialog.Builder alert = new AlertDialog.Builder(Comments.this);
         View mView = getLayoutInflater().inflate(R.layout.custom_dialog,null);
         final EditText txt_inputText = (EditText)mView.findViewById(R.id.txt_input);
-        Button btn_cancel = (Button)mView.findViewById(R.id.Cancel);
-        Button add_comment = (Button)mView.findViewById(R.id.saveComment);
+        MaterialButton btn_cancel = mView.findViewById(R.id.Cancel);
+        MaterialButton add_comment = mView.findViewById(R.id.saveComment);
         alert.setView(mView);
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCanceledOnTouchOutside(false);

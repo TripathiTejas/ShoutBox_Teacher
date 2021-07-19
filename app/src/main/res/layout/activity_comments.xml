@@ -4,29 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/white"
     tools:context=".Activities.Comments">
 
     <TextView
         android:id="@+id/CommentTitle"
         android:layout_width="match_parent"
         style="@style/CategoryStyle"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/gotham"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
         android:text="Comments"
         android:gravity="center_horizontal"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/displayComment"
-        android:background="@color/background"
+        tools:listitem="@layout/comment_display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/CommentTitle"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:layout_above="@id/AddComment"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddComment"
