@@ -85,4 +85,7 @@ public class ProjectFeedActivity extends AppCompatActivity {
         });
     }
 
+    public void editProfile(View view) {
+        startActivity(new Intent(ProjectFeedActivity.this, UserInfo.class));
+    }
 }

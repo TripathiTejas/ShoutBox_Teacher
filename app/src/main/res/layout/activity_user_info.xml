@@ -69,6 +69,6 @@
         android:id="@+id/NextButton"
         android:layout_margin="24dp"
         style="@style/ButtonStyle"
-        android:text="Next"/>
+        android:text="Save"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
