@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -50,10 +52,9 @@ public class AddProjectActivity extends AppCompatActivity {
     private ImageView projectImage;
     private Uri imageUri;
     private StorageReference reference= FirebaseStorage.getInstance().getReference();
-    private Button UploadProject;
+    private Button UploadProject, addEnquiry;
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-
     EnquiryProjectModel model;
 
     @Override
@@ -61,11 +62,13 @@ public class AddProjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_project);
 
+        addEnquiry = findViewById(R.id.addEnquiry);
 
         if (getIntent().getStringExtra("activity").equals("enquiry")){
             model= (EnquiryProjectModel) getIntent().getExtras().getSerializable("enquiryModel");
             Toast.makeText(this, model.getQuestion(), Toast.LENGTH_SHORT).show();
-
+            addEnquiry.setText("Enquiry Added!");
+            addEnquiry.setEnabled(false);
         }
 
         ProjectTitle=findViewById(R.id.ProjectTitle);
@@ -219,6 +222,27 @@ public class AddProjectActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        new MaterialAlertDialogBuilder(AddProjectActivity.this)
+                .setTitle("Go Back?")
+                .setMessage("All changes will be lost")
+                .setPositiveButton("Yes Go back", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(AddProjectActivity.this, ProjectFeedActivity.class));
+                        finish();
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .show();
     }
 
     public void openEnquiryDetails(View view) {

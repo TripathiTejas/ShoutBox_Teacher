@@ -8,6 +8,14 @@
     android:orientation="vertical"
     android:background="@color/background"
     android:padding="20dp">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Add Enquiry Details"
+        android:id="@+id/addEnquiry"
+        android:onClick="openEnquiryDetails"
+        android:layout_gravity="center"/>
     
     <ImageView
         android:id="@+id/ProjectImage"
@@ -35,14 +43,6 @@
         android:layout_weight="10"
         android:hint="Project description"
         android:gravity="top"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Enquiry Details"
-        android:id="@+id/addNew"
-        android:onClick="openEnquiryDetails"
-        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/AddProject"

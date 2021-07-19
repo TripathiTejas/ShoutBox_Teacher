@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.kotakeducation.shoutbox.Adapters.FormAdapter;
 import org.kotakeducation.shoutbox.Models.EnquiryProjectModel;
@@ -53,6 +56,8 @@ public class AddEnquiryDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+
                 bodyTextHashmap = adapter.getBodyTextHashmap();
                 tempTV.setText(adapter.getBodyTextHashmap().toString());
 
@@ -67,12 +72,25 @@ public class AddEnquiryDetailsActivity extends AppCompatActivity {
                     enquiryProjectModel.setConnect(adapter.getBodyTextHashmap().get("Connect").toString());
                     tempTV.setText(adapter.getBodyTextHashmap().get("Connect").toString());
 
-                    Intent mIntent = new Intent(AddEnquiryDetailsActivity.this, AddProjectActivity.class);
-                    mIntent.putExtra("activity", "enquiry");
-                    mIntent.putExtra("enquiryModel", enquiryProjectModel);
-                    startActivity(mIntent);
-                    finish();
-
+                    new MaterialAlertDialogBuilder(AddEnquiryDetailsActivity.this)
+                            .setTitle("Confirm?")
+                            .setMessage("You will no be able to edit this section later")
+                            .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent mIntent = new Intent(AddEnquiryDetailsActivity.this, AddProjectActivity.class);
+                                    mIntent.putExtra("activity", "enquiry");
+                                    mIntent.putExtra("enquiryModel", enquiryProjectModel);
+                                    startActivity(mIntent);
+                                    finish();
+                                }
+                            })
+                            .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            })
+                            .show();
 
                 } catch (Exception e) {
                     Toast.makeText(AddEnquiryDetailsActivity.this, "Empty fields", Toast.LENGTH_SHORT).show();
@@ -80,6 +98,29 @@ public class AddEnquiryDetailsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onBackPressed() {
+        new MaterialAlertDialogBuilder(AddEnquiryDetailsActivity.this)
+                .setTitle("Go Back?")
+                .setMessage("All changes will be lost")
+                .setPositiveButton("Yes Go back", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        Intent intent = new Intent(AddEnquiryDetailsActivity.this, AddProjectActivity.class);
+                        intent.putExtra("activity", "feed");
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .show();
     }
 
     private void init() {
